@@ -13,14 +13,11 @@ class Solution {
                 }
             }
         }
+        //after swapping, check which number is missing
         for(int i=0; i<nums.length; i++) {
             if(i+1 != nums[i])
                 return i+1;
         }
         return n+1;
-    }
-    
-    public void swap() {
-        
     }
 }
