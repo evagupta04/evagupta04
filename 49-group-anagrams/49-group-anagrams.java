@@ -12,8 +12,9 @@ class Solution {
             for(char c : s.toCharArray()) {
                 ch[c - 'a']++;
             }
-            //convert char array, backto String
+            //convert char array, back to String
             String temp = String.valueOf(ch);
+            
             //if map doesnt contains that string as key, then put it with a new ArrayList object
             if(!map.containsKey(temp))
                 map.put(temp, new ArrayList<>());
