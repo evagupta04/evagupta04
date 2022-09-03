@@ -1,4 +1,5 @@
 class Solution {
+    //time complexity == nk
     public List<List<String>> groupAnagrams(String[] strs) {
         if(strs.length == 0 || strs == null)
             return new ArrayList<>();
@@ -24,7 +25,7 @@ class Solution {
         return new ArrayList<>(map.values());
     }
 }
-
+///////time complexity= NKlogK
 //Using Sorting
 // public List<List<String>> groupAnagrams(String[] strs) {
 //         if(strs.length == 0 || strs == null)
