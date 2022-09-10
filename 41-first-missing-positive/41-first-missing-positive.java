@@ -5,7 +5,7 @@ class Solution {
             int element = nums[i];
             if(element >= 1 && element <= n) {
                 int chair = nums[i]-1;
-                if(nums[chair] != element) {
+                if(nums[chair] != nums[i]) {
                     int temp = nums[i];
                     nums[i] = nums[chair];
                     nums[chair] = temp;
