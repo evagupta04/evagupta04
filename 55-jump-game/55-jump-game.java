@@ -8,4 +8,6 @@ class Solution {
         }
         return true;
     }
-}
+} 
+//TC: O(n) since we are doing singke traversal
+//SC: O(1) since no extra space needed
