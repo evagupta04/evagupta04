@@ -1,17 +1,15 @@
 class Solution {
-    //Recustion + Memorization (Top Down Approach)
-    //Complexity : Time: O(n) ; Space: O(n)
+    //DP, Bottom Up approach
     public int climbStairs(int n) {
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1,1);   //for one steop, there will be 1 way
-        map.put(2,2);   //for two steps, there will be 2 ways
-        return climbSt(n, map);
-    }
-    public int climbSt(int n, Map<Integer, Integer> map) {
-        if(map.containsKey(n))
-            return map.get(n);
-        map.put(n, climbSt(n-1, map) + climbSt(n-2, map));
-        return map.get(n);
+        if(n <= 1)
+            return 1;
+        int[] dp = new int[n+1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for(int i=3; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
     }
     
     //DP approach
@@ -38,4 +36,19 @@ class Solution {
     //     if(n == 2)
     //         return 2;
     //     else return climbStairs(n-1) + climbStairs(n-2);
+    // }
+
+//**********Recustion + Memorization (Top Down Approach)
+//Complexity : Time: O(n) ; Space: O(n)
+    // public int climbStairs(int n) {
+    //     Map<Integer, Integer> map = new HashMap<>();
+    //     map.put(1,1);   //for one steop, there will be 1 way
+    //     map.put(2,2);   //for two steps, there will be 2 ways
+    //     return climbSt(n, map);
+    // }
+    // public int climbSt(int n, Map<Integer, Integer> map) {
+    //     if(map.containsKey(n))
+    //         return map.get(n);
+    //     map.put(n, climbSt(n-1, map) + climbSt(n-2, map));
+    //     return map.get(n);
     // }
