@@ -1,5 +1,6 @@
 class Solution {
     //DP + Optimization
+    //Time: O(n) ; Space: O(1)
     public int climbStairs(int n) {
         if(n <= 1)
             return 1;
