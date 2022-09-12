@@ -2,7 +2,7 @@ class Solution {
     public void sortColors(int[] nums) {
     //1-pass solution
     int p1 = 0, p2 = nums.length-1;
-        for(int i=0; i<=p2; i++) {
+        for(int i=0; i<=p2; i++) {      //use i<=p2 here, not nums.length-1, bczp2 will decreement, we have to check upto there only
             if(nums[i] == 0) {
                 nums[i] = nums[p1];
                 nums[p1] = 0;
