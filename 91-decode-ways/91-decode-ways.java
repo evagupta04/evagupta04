@@ -1,23 +1,23 @@
 class Solution {
     //using dp- bottom up approach
     public int numDecodings(String s) {
-        int[] dp = new int[102];                
-        Arrays.fill(dp, 0);
+        if(s == null || s.length() == 0)
+            return 0;
         int n = s.length();
-        int op2 = 0;
-        dp[n+1] = 1;                                //because for i>=s.length(), we were returning 1
-        dp[n] = 1;
-        for(int i = n-1; i>=0; i--) {
-            int op1 = s.charAt(i)-'0';
-            if(i < s.length()-1) {
-                op2 = op1*10 + s.charAt(i+1)-'0';
-            }
-            if(op1 > 0)
-                dp[i] += dp[i+1];
-            if(op1 > 0 && op2 > 0 && op2 <= 26)
-                dp[i] += dp[i+2];
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        dp[1] = s.charAt(0) != '0' ? 1 : 0;
+        
+        for(int i=2; i<=n; i++) {
+            int first = Integer.valueOf(s.substring(i-1, i));
+            int second = Integer.valueOf(s.substring(i-2, i));
+            
+            if( first >=1 && first <= 9)
+                dp[i] += dp[i-1];
+            if(second >=10 && second <= 26)
+                dp[i] += dp[i-2];
         }
-        return dp[0];
+        return dp[n];
     }
 }
 
@@ -69,3 +69,24 @@ class Solution {
 //             ans += help(i+2, s, dp);                //i+2 because we have taken 2 digits
 //         return dp[i] = ans;
 //     }
+//----------------------------------------
+//using dp- bottom up approach
+    // public int numDecodings(String s) {
+    //     int[] dp = new int[102];                
+    //     Arrays.fill(dp, 0);
+    //     int n = s.length();
+    //     int op2 = 0;
+    //     dp[n+1] = 1;                                //because for i>=s.length(), we were returning 1
+    //     dp[n] = 1;
+    //     for(int i = n-1; i>=0; i--) {
+    //         int op1 = s.charAt(i)-'0';
+    //         if(i < s.length()-1) {
+    //             op2 = op1*10 + s.charAt(i+1)-'0';
+    //         }
+    //         if(op1 > 0)
+    //             dp[i] += dp[i+1];
+    //         if(op1 > 0 && op2 > 0 && op2 <= 26)
+    //             dp[i] += dp[i+2];
+    //     }
+    //     return dp[0];
+    // }
